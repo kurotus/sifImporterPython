@@ -1,5 +1,5 @@
 # SifExport for Python
-Â# Version 0.1
+# Version 0.1
 # This script reads a predefined CSV file and exports it as SIF 
 # We use this to import new students to our ILS
 # There is also a PHP version available, this python version is at the moment more primitive
