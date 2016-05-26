@@ -1,8 +1,14 @@
+# SifExport for Python
+Â# Version 0.1
+# This script reads a predefined CSV file and exports it as SIF 
+# We use this to import new students to our ILS
+# There is also a PHP version available, this python version is at the moment more primitive
+
 import csv
 import datetime
 import os
 
-
+# Create a list from CSV
 def ReadCSVasList(csv_file):
     try:
         with open(csv_file) as csvfile:
@@ -14,21 +20,22 @@ def ReadCSVasList(csv_file):
             print("I/O error({0}): {1}".format(errno, strerror))
     return
 
-#For csv
+#Read CSV to list
 currentPath = os.getcwd()
 csv_file = "export.csv"
 csv_data_list = ReadCSVasList(csv_file)
 
 
-#other stuff
+#SIF needs a SYSDATE
 t = datetime.date.today()
 sysdate = t.strftime('%Y-%m-%d')
 
 
-# for file (sif)
+# Define a SIF file for export
 f = open("sifExport.sif","w")
 
-
+Â# Here we define the SIF. Read Voyager System manual for more information
+# This could be defined better, but it works for now. 
 for p in csv_data_list:
     surName = p[0]
     firstName = p[1]
@@ -72,7 +79,7 @@ for p in csv_data_list:
     addressEnd2="2050.10.20"
 
 
-    #f.write (surName + firstName + instid + streetAddress + zipCode + city + email + patronGroup + statCat + purgeDate)
+# After all the data has been declared, let's write it into a file. No error checking at the moment. 
 
     f.write (patronID.rjust(10,'0'))
     f.write (barcodeID.rjust(10, ' '))
