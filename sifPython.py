@@ -34,7 +34,7 @@ sysdate = t.strftime('%Y-%m-%d')
 # Define a SIF file for export
 f = open("sifExport.sif","w")
 
-Â# Here we define the SIF. Read Voyager System manual for more information
+# Here we define the SIF. Read Voyager System manual for more information
 # This could be defined better, but it works for now. 
 for p in csv_data_list:
     surName = p[0]
